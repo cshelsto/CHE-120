@@ -21,7 +21,7 @@ Exercises
 from random import choice, random #CS: Imports choice and random functions from Python's random module. Does so because choice will randomly pick element from a list (used for balls direction), and random with generate float between 0 and 1 (used for ball's speed).
 from turtle import * #CS: Imports all of the functions from turtle module. Using * imports every function in turtle. Will be used to draw graphics for game (paddle, ball, etc)
 
-from freegames import vector #CS: imports vector from freegames module. Vector represents 2D points or directions, which will be used in the ball's movements. 
+from freegames import vector #CS: imports vector from freegames module. Vector represents 2D points or directions, which will be used for the ball's movements. 
 
 
 def value():
