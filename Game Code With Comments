@@ -24,33 +24,33 @@ from turtle import * #CS: Imports all of the functions from turtle module. Using
 from freegames import vector #CS: imports vector from freegames module. Vector represents 2D points or directions, which will be used for the ball's movements. 
 
 
-def value():
-    """Randomly generate value between (-5, -3) or (3, 5)."""
-    return (3 + random() * 2) * choice([1, -1])
+def value(): #CS: Function that generates a random speed and direction for the ball so each game starts with unpredictable movement.
+    """Randomly generate value between (-5, -3) or (3, 5).""" 
+    return (3 + random() * 2) * choice([1, -1]) #CS: Generates a random speed between 3 and 5, then randomly makes it positive or negative so the ball moves unpredictably in both directions.
 
 
-ball = vector(0, 0)
-aim = vector(value(), value())
-state = {1: 0, 2: 0}
+ball = vector(0, 0) #CS: Creates a vector at (0,0) to represent the starting position of the ball at the center of the screen.
+aim = vector(value(), value()) #CS: Creates a vector for the ball's movement, using random x and y speeds to give initial direction and speed variability.
+state = {1: 0, 2: 0} #CS: Initializes a dictionary to store each paddle's vertical position, allowing easy updates by player number.
 
 
-def move(player, change):
+def move(player, change): #CS: Function that changes a player’s paddle position by the given amount so players can control their paddles.
     """Move player position by change."""
-    state[player] += change
+    state[player] += change #CS: Adds the change value to the selected player's paddle position to move it up or down.
 
 
-def rectangle(x, y, width, height):
+def rectangle(x, y, width, height): #CS: Function that draws a solid rectangle at a specified position with given size to represent a paddle
     """Draw rectangle at (x, y) with given width and height."""
-    up()
-    goto(x, y)
-    down()
-    begin_fill()
-    for count in range(2):
-        forward(width)
-        left(90)
-        forward(height)
-        left(90)
-    end_fill()
+    up() #CS: Prepares to move to the rectangle’s starting point without drawing anything so no extra lines appear by lifting pen (drawing device).
+    goto(x, y) #CS: Moves to the top-left corner of the rectangle so it starts drawing in the correct location.
+    down() #CS: Starts drawing so the rectangle shape is visible on the screen. Puts pen down to draw. 
+    begin_fill() #CS: Begins filling the shape so the rectangle appears as a solid block rather than just an outline.
+    for count in range(2): #CS: Repeats the rectangle drawing steps twice. 'for' starts a loop, 'count' is the loop variable, 'in' iterates over the sequence, and 'range(2)' generates 0 and 1 to repeat the block two times.
+        forward(width) #CS: Draws the top or bottom side of the rectangle so the horizontal part of the shape is created. Moves in the direction the line is facing by width. 
+        left(90) #CS: Changes direction 90° (left) to draw the vertical side next, forming a right angle for the rectangle.
+        forward(height) #CS: Draws the left or right side of the rectangle so the vertical part of the shape is complete. 
+        left(90) #CS: Turns again 90° (left) to align with the next horizontal side, completing the rectangle’s perimeter.
+    end_fill() #CS: Fills the rectangle so it appears as a solid paddle on the screen.
 
 
 def draw():
