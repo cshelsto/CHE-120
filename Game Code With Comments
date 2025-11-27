@@ -55,9 +55,9 @@ def rectangle(x, y, width, height): #CS: Function that draws a solid rectangle a
 
 def draw(): #SA: The main function that runs the game and draws the interface for the game.
     """Draw game and move pong ball."""
-    clear() #SA: 
-    rectangle(-200, state[1], 10, 50)
-    rectangle(190, state[2], 10, 50)
+    clear() #SA: Introduces a blank interface to print and run the game
+    rectangle(-200, state[1], 10, 50) #SA: Prints the rectangle on the left side
+    rectangle(190, state[2], 10, 50) #SA: Prints the rectangle on the right side
 
     ball.move(aim)
     x = ball.x
@@ -96,9 +96,9 @@ setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
 listen()
-onkey(lambda: move(1, 20), 'w') #SA: moves paddle 1 up 20 pixels on the screen when the 'w' key pressed on the keyboard
-onkey(lambda: move(1, -20), 's') #SA: moves paddle 1 down 20 pixels on the screen when the 's' key is pressed on the keyboard
-onkey(lambda: move(2, 20), 'i') #SA: moves paddle 2 up 20 pixels on the screen when the 'i' key is pressed on the keyboard
-onkey(lambda: move(2, -20), 'k') #SA: moves paddle 2 down 20 pixels on the screen when the 'k' key is pressed on the keyboard
+onkey(lambda: move(1, 20), 'w') #SA: moves left paddle up 20 pixels on the screen when the 'w' key pressed on the keyboard
+onkey(lambda: move(1, -20), 's') #SA: moves left paddle down 20 pixels on the screen when the 's' key is pressed on the keyboard
+onkey(lambda: move(2, 20), 'i') #SA: moves right paddle up 20 pixels on the screen when the 'i' key is pressed on the keyboard
+onkey(lambda: move(2, -20), 'k') #SA: moves right paddle down 20 pixels on the screen when the 'k' key is pressed on the keyboard
 draw() #SA: calls the draw function to run the game
-done() #SA:
+done() #SA: ends the game and the screen/game interface freezes
