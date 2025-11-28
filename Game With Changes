@@ -15,7 +15,7 @@ aim2 = vector(value(), value())
 
 state = {1: 0, 2: 0}
 score = {1: 0, 2: 0} #Adding scores. 
-winning_score = 10 #plyer will win if they get this score 
+winning_score = 10 #player will win if they get this score 
 
 def move(player, change):
     """Move player position by change."""
