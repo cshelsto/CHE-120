@@ -15,7 +15,7 @@ aim2 = vector(value(), value())
 
 state = {1: 0, 2: 0}
 score = {1: 0, 2: 0} #Adding scores. 
-losing_score = 10 #if player lets ball pass paddle this number of times, other player wins. 
+winning_score = 10 #plyer will win if they get this score 
 
 def move(player, change):
     """Move player position by change."""
@@ -39,20 +39,20 @@ def draw():
    
     clear()
     
-    #losing score and message for winner
-    if score[1] >= losing_score:
-        clear()
-        up()
-        goto(0, 0)
-        write("PLAYER TWO WINS!!", align="center", font=("Times", 20, "bold"))
-        update()
-        return
-
-    if score[2] >= losing_score:
+    #Winning score and message for winner
+    if score[1] >= winning_score:
         clear()
         up()
         goto(0, 0)
         write("PLAYER ONE WINS!!", align="center", font=("Times", 20, "bold"))
+        update()
+        return
+
+    if score[2] >= winning_score:
+        clear()
+        up()
+        goto(0, 0)
+        write("PLAYER TWO WINS!!", align="center", font=("Times", 20, "bold"))
         update()
         return
 
