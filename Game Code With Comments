@@ -69,14 +69,14 @@ def draw(): #SA: The main function that runs the game and draws the interface fo
     update()
 
     if y < -200 or y > 200: #SA: Checks if the ball is at the top edge or bottom edge of the interface
-        aim.y = -aim.y #SA: Redirects the ball by making it bounce off the tceiling or the floor of the interface
+        aim.y = -aim.y #SA: Redirects the ball by making it bounce off the ceiling or the floor of the interface
 
-    if x < -185:
-        low = state[1]
-        high = state[1] + 50
+    if x < -185: #SA: If statement that deals with the ball once it reaches the left edge of the game interface
+        low = state[1] #SA: Sets the lower bounds of the left paddle on the screen according to the 'state' dictionary
+        high = state[1] + 50 #SA: Sets the upper bounds of the left paddle on the screen according to the 'state' dictionary
 
-        if low <= y <= high:
-            aim.x = -aim.x
+        if low <= y <= high: #SA: checks to see if the ball has hit the bounds paddle of the left paddle
+            aim.x = -aim.x #SA: Redirects the ball in the opposite direction 
         else:
             return
 
