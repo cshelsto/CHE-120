@@ -15,7 +15,7 @@ aim2 = vector(value(), value())
 
 state = {1: 0, 2: 0}
 score = {1: 0, 2: 0} #Adding scores. 
-winning_score = 10 #player will win if they get this score 
+winning_score = 10 #plyer will win if they get this score 
 
 def move(player, change):
     """Move player position by change."""
@@ -73,25 +73,25 @@ def draw():
     if y < -200 or y > 200:
         aim.y = -aim.y
 
-    if x < -185:
+    if x < -185: #player one's wall
         low = state[1]
         high = state[1] + 50
         if low <= y <= high:
-            aim.x = -aim.x
+            aim.x = -aim.x #bounces off paddle (direction changes)
         else:
-            score[2] += 1
+            score[2] += 1 #adds to player two's score 
             ball.x = 0
             ball.y = 0
             aim.x = value()
             aim.y = value()
 
-    if x > 185:
+    if x > 185: #player two's wall 
         low = state[2]
         high = state[2] + 50
         if low <= y <= high:
-            aim.x = -aim.x
+            aim.x = -aim.x #bounces off paddle 
         else:
-            score[1] += 1
+            score[1] += 1 #adds to player one's score 
             ball.x = 0
             ball.y = 0
             aim.x = value()
@@ -105,25 +105,25 @@ def draw():
     if y2 < -200 or y2 > 200:
         aim2.y = -aim2.y
 
-    if x2 < -185:
+    if x2 < -185: #player one's wall 
         low = state[1]
         high = state[1] + 50
         if low <= y2 <= high:
-            aim2.x = -aim2.x
+            aim2.x = -aim2.x #if it bounces off paddle 
         else:
-            score[2] += 1
+            score[2] += 1 #adds to player two's score 
             ball2.x = 0
             ball2.y = 0
             aim2.x = value()
             aim2.y = value()
 
-    if x2 > 185:
+    if x2 > 185: #player two's wall 
         low = state[2]
         high = state[2] + 50
         if low <= y2 <= high:
-            aim2.x = -aim2.x
+            aim2.x = -aim2.x #bounces off paddle 
         else:
-            score[1] += 1
+            score[1] += 1 #adds to player one's score 
             ball2.x = 0
             ball2.y = 0
             aim2.x = value()
