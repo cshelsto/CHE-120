@@ -3,7 +3,6 @@ from turtle import *
 
 from freegames import vector
 
-
 def value():
     """Randomly generate value between (-5, -3) or (3, 5)."""
     return (3 + random() * 2) * choice([1, -1])
@@ -12,6 +11,9 @@ def value():
 ball = vector(0, 0)
 aim = vector(value(), value())
 state = {1: 0, 2: 0}
+
+ball2 = vector(0, 0)
+aim2 = vector(value(), value())
 
 
 def move(player, change):
@@ -43,11 +45,6 @@ def draw():
     x = ball.x
     y = ball.y
 
-    up()
-    goto(x, y)
-    dot(10)
-    update()
-
     if y < -200 or y > 200:
         aim.y = -aim.y
 
@@ -68,7 +65,40 @@ def draw():
             aim.x = -aim.x
         else:
             return
-
+    
+    #Change one: addition of second ball. 
+    ball2.move(aim2)
+    x2 = ball2.x
+    y2 = ball2.y
+    
+    if y2 < -200 or y2 > 200:
+        aim2.y = -aim2.y
+        
+    if x2 < -185:
+        low = state[1]
+        high = state[1] + 50
+        if low <= y2 <= high:
+            aim2.x = -aim2.x
+        else:
+            return
+    
+    if x2 > 185:
+        low = state[2]
+        high = state[2] + 50
+        if low <= y2 <= high:
+            aim2.x = -aim2.x
+        else:
+            return
+    
+    up()
+    goto(x, y)
+    dot(10)
+    
+    up()
+    goto(x2, y2)
+    dot(10)
+    
+    update()
     ontimer(draw, 50)
 
 
