@@ -89,13 +89,13 @@ def draw(): #SA: The main function that runs the game and draws the interface fo
         else: #SA: Handles the program if the ball has not hit the right paddle
             return #SA: Stops the game
 
-    ontimer(draw, 50)
+    ontimer(draw, 50) #SA: This sets a timer to move the ball at a speed of 1 unit per 50 miliseconds
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-listen() #SA: Sode that opens up keyboard inputs
+setup(420, 420, 370, 0) #SA: Sets up the size of the game interface on screen (420 units by 420 units)
+hideturtle() #SA: Hides the turtle that runs the game's animations
+tracer(False) #SA: Hides the tracer that makes the turtle work
+listen() #SA: Code that opens up keyboard inputs
 onkey(lambda: move(1, 20), 'w') #SA: Moves left paddle up 20 units on the screen when the 'w' key pressed on the keyboard
 onkey(lambda: move(1, -20), 's') #SA: Moves left paddle down 20 units on the screen when the 's' key is pressed on the keyboard
 onkey(lambda: move(2, 20), 'i') #SA: Moves right paddle up 20 units on the screen when the 'i' key is pressed on the keyboard
