@@ -4,6 +4,7 @@ This game was developed as a final project for Computer Literacy and Programming
 Our game is a twist on the classic game Pong, introducing several changes: 
 * Introduction of colours 
 * Two balls instead of one 
+* Introduction of scoreboard and winning score
 * Increased ball speed
 
 We hope you enjoy playing our version of Pong!
