@@ -7,19 +7,19 @@ def value():
     """Randomly generate value between (-5, -3) or (3, 5)."""
     return (3 + random() * 2) * choice([1, -1])
 
-
 ball = vector(0, 0)
 aim = vector(value(), value())
-state = {1: 0, 2: 0}
 
 ball2 = vector(0, 0)
-aim2 = vector(value(), value())
+aim2 = vector(value(), value()) 
 
+state = {1: 0, 2: 0}
+score = {1: 0, 2: 0} #Adding scores. 
+winning_score = 10 #Score needed to win 
 
 def move(player, change):
     """Move player position by change."""
     state[player] += change
-
 
 def rectangle(x, y, width, height):
     """Draw rectangle at (x, y) with given width and height."""
@@ -34,10 +34,35 @@ def rectangle(x, y, width, height):
         left(90)
     end_fill()
 
-
 def draw():
-    """Draw game and move pong ball."""
+    """Draw game and move pong balls."""
+   
     clear()
+    
+    #Winning score and message for winner 
+    if score[1] >= winning_score:
+        clear()
+        up()
+        goto(0, 0)
+        write("PLAYER ONE WINS!!", align="center", font=("Times", 20, "bold"))
+        update()
+        return
+
+    if score[2] >= winning_score:
+        clear()
+        up()
+        goto(0, 0)
+        write("PLAYER TWO WINS!!", align="center", font=("Times", 20, "bold"))
+        update()
+        return
+
+    # This will display scores at top of screen
+    up()
+    goto(-50, 180)
+    write(f"{score[1]}", font=("Times", 20, "bold")) 
+    goto(50, 180)
+    write(f"{score[2]}", font=("Times", 20, "bold"))
+
     rectangle(-200, state[1], 10, 50)
     rectangle(190, state[2], 10, 50)
 
@@ -51,56 +76,68 @@ def draw():
     if x < -185:
         low = state[1]
         high = state[1] + 50
-
         if low <= y <= high:
             aim.x = -aim.x
         else:
-            return
+            score[2] += 1
+            ball.x = 0
+            ball.y = 0
+            aim.x = value()
+            aim.y = value()
 
     if x > 185:
         low = state[2]
         high = state[2] + 50
-
         if low <= y <= high:
             aim.x = -aim.x
         else:
-            return
-    
-    #Change one: addition of second ball. 
+            score[1] += 1
+            ball.x = 0
+            ball.y = 0
+            aim.x = value()
+            aim.y = value()
+
+    # Addition of second ball 
     ball2.move(aim2)
     x2 = ball2.x
     y2 = ball2.y
-    
+
     if y2 < -200 or y2 > 200:
         aim2.y = -aim2.y
-        
+
     if x2 < -185:
         low = state[1]
         high = state[1] + 50
         if low <= y2 <= high:
             aim2.x = -aim2.x
         else:
-            return
-    
+            score[2] += 1
+            ball2.x = 0
+            ball2.y = 0
+            aim2.x = value()
+            aim2.y = value()
+
     if x2 > 185:
         low = state[2]
         high = state[2] + 50
         if low <= y2 <= high:
             aim2.x = -aim2.x
         else:
-            return
-    
+            score[1] += 1
+            ball2.x = 0
+            ball2.y = 0
+            aim2.x = value()
+            aim2.y = value()
+
     up()
     goto(x, y)
-    dot(10)
-    
+    dot(10, 'blue')    
     up()
     goto(x2, y2)
-    dot(10)
-    
+    dot(10, 'purple')   
+
     update()
     ontimer(draw, 50)
-
 
 setup(420, 420, 370, 0)
 hideturtle()
