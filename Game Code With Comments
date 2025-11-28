@@ -59,35 +59,35 @@ def draw(): #SA: The main function that runs the game and draws the interface fo
     rectangle(-200, state[1], 10, 50) #SA: Prints the rectangle on the left side of the screen (200 units to the left)
     rectangle(190, state[2], 10, 50) #SA: Prints the rectangle on the right side of the screen (190 units to the right)
 
-    ball.move(aim) 
+    ball.move(aim) #SA: 
     x = ball.x
     y = ball.y
 
-    up()
-    goto(x, y)
+    up() #SA: Moves the pen up to the centre of the interface without drawing any lines
+    goto(x, y) #SA: Moves the pen to the centre of the interface to draw the ball
     dot(10) #SA: Draws a dot of size 10
-    update()
+    update() #SA: Updates the screen with the updated interface containing the paddles and the ball
 
-    if y < -200 or y > 200: #SA: Checks if the ball is at the top edge or bottom edge of the interface
+    if y < -200 or y > 200: #SA: Checks if the ball is at the top edge or bottom edge of the interface by seeing how far away from the centre of the screen the ball is
         aim.y = -aim.y #SA: Redirects the ball by making it bounce off the ceiling or the floor of the interface
 
-    if x < -185: #SA: If statement that deals with the ball once it reaches the left edge of the game interface
+    if x < -185: #SA: If-statement that deals with the ball once it reaches the left edge of the game interface
         low = state[1] #SA: Sets the lower bounds of the left paddle on the screen according to the 'state' dictionary
         high = state[1] + 50 #SA: Sets the upper bounds of the left paddle on the screen according to the 'state' dictionary
 
-        if low <= y <= high: #SA: checks to see if the ball has hit the bounds paddle of the left paddle
-            aim.x = -aim.x #SA: Redirects the ball in the opposite direction 
-        else:
-            return
+        if low <= y <= high: #SA: Nested if-statement that checks to see if the ball has hit the bounds of the left paddle
+            aim.x = -aim.x #SA: Redirects the ball in the opposite direction if it is within the bounds of the left paddle
+        else: #SA: Handles the program if the ball is not within the bounds of the left paddle
+            return #SA: Stops the game 
 
-    if x > 185:
-        low = state[2]
-        high = state[2] + 50
+    if x > 185: #SA: If-statement that deals with the ball once it reaches the right edge of the game interface
+        low = state[2] #SA: Sets the lower bounds of the right paddle on the screen using the 'state' dictionary
+        high = state[2] + 50 #SA: Sets the upper bounds of the right paddle on the screen using the 'state' dictionary
 
-        if low <= y <= high:
-            aim.x = -aim.x
-        else:
-            return
+        if low <= y <= high: #SA: Nested if-statement that checks whether the ball is within the bounds of the paddle
+            aim.x = -aim.x #SA: Redirects the ball in the opposite direction if it hits the right paddle
+        else: #SA: Handles the program if the ball has not hit the right paddle
+            return #SA: Stops the game
 
     ontimer(draw, 50)
 
@@ -96,9 +96,9 @@ setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
 listen() #SA: Sode that opens up keyboard inputs
-onkey(lambda: move(1, 20), 'w') #SA: Moves left paddle up 20 pixels on the screen when the 'w' key pressed on the keyboard
-onkey(lambda: move(1, -20), 's') #SA: Moves left paddle down 20 pixels on the screen when the 's' key is pressed on the keyboard
-onkey(lambda: move(2, 20), 'i') #SA: Moves right paddle up 20 pixels on the screen when the 'i' key is pressed on the keyboard
-onkey(lambda: move(2, -20), 'k') #SA: Moves right paddle down 20 pixels on the screen when the 'k' key is pressed on the keyboard
+onkey(lambda: move(1, 20), 'w') #SA: Moves left paddle up 20 units on the screen when the 'w' key pressed on the keyboard
+onkey(lambda: move(1, -20), 's') #SA: Moves left paddle down 20 units on the screen when the 's' key is pressed on the keyboard
+onkey(lambda: move(2, 20), 'i') #SA: Moves right paddle up 20 units on the screen when the 'i' key is pressed on the keyboard
+onkey(lambda: move(2, -20), 'k') #SA: Moves right paddle down 20 units on the screen when the 'k' key is pressed on the keyboard
 draw() #SA: Calls the draw function to run the game
 done() #SA: Ends the game and the screen/game interface freezes
