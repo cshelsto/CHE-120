@@ -1,4 +1,4 @@
-#Department of Chemcial Engineering, Faculty of Engineering 
+#Department of Chemical Engineering, Faculty of Engineering 
 #University of Waterloo
 #Started November 6, 2025
 
@@ -56,12 +56,12 @@ def rectangle(x, y, width, height): #CS: Function that draws a solid rectangle a
 def draw(): #SA: The main function that runs the game and draws the interface for the game.
     """Draw game and move pong ball."""
     clear() #SA: Introduces a blank interface to print and run the game
-    rectangle(-200, state[1], 10, 50) #SA: Prints the rectangle on the left side of the screen (200 units to the left)
-    rectangle(190, state[2], 10, 50) #SA: Prints the rectangle on the right side of the screen (190 units to the right)
+    rectangle(-200, state[1], 10, 50) #SA: Prints the rectangle on the left side of the screen (200 units to the left of the centre)
+    rectangle(190, state[2], 10, 50) #SA: Prints the rectangle on the right side of the screen (190 units to the right of the centre)
 
-    ball.move(aim) #SA: 
-    x = ball.x
-    y = ball.y
+    ball.move(aim) #SA: Uses the aim vector to move the ball from the centre of the game interface
+    x = ball.x #SA: The ball's horizontal position as it changes is stored in the variable 'x' as positive or negative integer values 
+    y = ball.y #SA: The ball's vertical position as it changes is stored in the variable 'y'
 
     up() #SA: Moves the pen up to the centre of the interface without drawing any lines
     goto(x, y) #SA: Moves the pen to the centre of the interface to draw the ball
