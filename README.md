@@ -6,6 +6,7 @@ Our game is a twist on the classic game Pong, introducing several changes:
 * Two balls instead of one 
 * Introduction of scoreboard and winning score
 * Increased ball speed
+* Added obstuctions in the middle of the screen
 
 We hope you enjoy playing our version of Pong!
 
