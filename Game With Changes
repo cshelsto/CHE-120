@@ -52,7 +52,7 @@ def draw():
         clear()
         up()
         goto(0, 0)
-        write("PLAYER TWO WINS!! \n \n GRAY WINS!", align="center", font=("Times", 20, "bold"))
+        write("PLAYER TWO WINS!! \n \n PINK WINS!", align="center", font=("Times", 20, "bold"))
         update()
         return
 
@@ -66,7 +66,7 @@ def draw():
     color("green") # Adding color to the paddles
     rectangle(-200, state[1], 10, 50)
 
-    color("gray")
+    color("violet")
     rectangle(190, state[2], 10, 50)
 
     color("black") # Drawing the rectangles for the obstructions
