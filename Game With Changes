@@ -44,7 +44,7 @@ def draw():
         clear()
         up()
         goto(0, 0)
-        write("PLAYER ONE WINS!!", align="center", font=("Times", 20, "bold"))
+        write("PLAYER ONE WINS!! \n \n GREEN WINS!", align="center", font=("Times", 20, "bold"))
         update()
         return
 
@@ -52,7 +52,7 @@ def draw():
         clear()
         up()
         goto(0, 0)
-        write("PLAYER TWO WINS!!", align="center", font=("Times", 20, "bold"))
+        write("PLAYER TWO WINS!! \n \n GRAY WINS!", align="center", font=("Times", 20, "bold"))
         update()
         return
 
