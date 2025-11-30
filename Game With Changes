@@ -63,12 +63,26 @@ def draw():
     goto(50, 180)
     write(f"{score[2]}", font=("Times", 20, "bold"))
 
+    color("green") # Adding color to the paddles
     rectangle(-200, state[1], 10, 50)
+
+    color("gray")
     rectangle(190, state[2], 10, 50)
+
+    color("black") # Drawing the rectangles for the obstructions
+    rectangle(-10, -100, 10, 40)
+    rectangle(-10, 100, 10, 40)
+
 
     ball.move(aim)
     x = ball.x
     y = ball.y
+
+    if -10 <= x <= 0 and -100 <= y <= -60: #Ensuring the first ball bounces off the first obstruction
+        aim.x = -aim.x
+    
+    if -10 <= x <= 0 and 100 <= y <= 140: #Ensuring the second ball off the second obstruction
+        aim.x = -aim.x
 
     if y < -200 or y > 200:
         aim.y = -aim.y
@@ -101,6 +115,12 @@ def draw():
     ball2.move(aim2)
     x2 = ball2.x
     y2 = ball2.y
+
+    if -10 <= x2 <= 0 and -100 <= y2 <= -60: # Ensuring the second ball bounces off the first obstruction
+        aim2.x = -aim2.x
+    
+    if -10 <= x2 <= 0 and 100 <= y2 <= 140: # Ensuring the second ball bounces off the second obstruction
+        aim2.x = -aim2.x
 
     if y2 < -200 or y2 > 200:
         aim2.y = -aim2.y
